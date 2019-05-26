@@ -2,13 +2,9 @@ package DataStore;
 
 import File.FileOptions;
 import File.FileManager;
+import org.json.simple.JSONObject;
 
 public class DataManager implements Commands {
-    /*
-     * 1.New Hashmap generate
-     * 3.options display
-     * */
-
 
     private KeyValueDataStore keyValueDataStore;
     private FileManager fileManager;
@@ -38,12 +34,12 @@ public class DataManager implements Commands {
 
 
     @Override
-    public void set(String key, String value) {
+    public void set(String key, JSONObject value) {
         keyValueDataStore.set(key, value);
     }
 
     @Override
-    public String get(String Key) {
+    public JSONObject get(String Key) {
         return keyValueDataStore.get(Key);
     }
 

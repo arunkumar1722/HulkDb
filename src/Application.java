@@ -1,23 +1,23 @@
 import DataStore.DataManager;
 import File.FileOptions;
-import File.FileRead;
-import File.FileWrite;
-
+import org.json.simple.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
-import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) throws IOException {
-        System.out.println("Hello world");
+
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         String filepath, filename;
         String input;
-        DataManager dm = null;
+
+        DataManager dm;
+
 
         System.out.println("Welcome to Hulk DB");
+        for(int i = 0;i < 15; i++)
+        System.out.println("*");
 
         System.out.println("Enter the file name:");
         filename = in.readLine();
@@ -32,33 +32,45 @@ public class Application {
             dm = new DataManager(options);
         }
 
-        boolean nextTime = true;
-        while (nextTime) {
+        boolean shouldContinue = true;
+        while (shouldContinue) {
+
             System.out.println("Options :\n 1-Create. \n 2-Read. \n 3-Delete. \n 4-Exit. \n");
             input = in.readLine();
 
             switch (input) {
                 case "1": {
-
                     System.out.println("Enter the Key");
                     String key = in.readLine();
                     //TODO key validations
                     System.out.println("Enter the Value");
 
                     String value = in.readLine();
+                    JSONObject obj;
+                    obj = new JSONObject();
+                    obj.put("Name", value);
+                    obj.put("CharacterCount",value.length());
+                    System.out.println(obj.toJSONString());
+                    /*
+                    {
+                        "name ": "value",
+                        "capsName":"VALUE"
+                    }*/
 
-                    dm.set(key, value);
-
-
+                    dm.set(key, obj);
                     break;
                 }
+
                 case "2": {
                     System.out.println("Enter the Key");
-                    String key =in.readLine();
+                    String key = in.readLine();
 
 
-                    String value = dm.get(key);
-                    System.out.println("Your value is " + value);
+                    JSONObject value = dm.get(key);
+                    if(value!=null)
+                    System.out.println("Your value is " + value.toJSONString());
+                    else
+                        System.out.println("Your value is " + "NULL");
 
                     break;
                 }
@@ -66,16 +78,12 @@ public class Application {
                 case "3": {
                     System.out.println("Enter the Key");
                     String key = in.readLine();
-
-
                     dm.delete(key);
-
-
                     break;
                 }
 
                 case "4": {
-                    nextTime = false;
+                    shouldContinue = false;
                     dm.exit();
                     break;
                 }

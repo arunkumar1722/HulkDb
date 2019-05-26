@@ -1,7 +1,9 @@
 package DataStore;
 
+import org.json.simple.JSONObject;
+
 public interface FileStore {
-    void set(String key, String value);
-    String get(String Key);
+    void set(String key, JSONObject value);
+    JSONObject get(String Key);
     boolean delete(String key);
 }
