@@ -14,20 +14,25 @@ public class DataManager implements Commands {
     private FileManager fileManager;
 
     public DataManager(FileOptions options) {
-        keyValueDataStore = new KeyValueDataStore();
         fileManager = new FileManager(options);
-        create();
+        keyValueDataStore = new KeyValueDataStore();
+        create(options);
     }
 
     public DataManager(String fileName) {
-        keyValueDataStore = new KeyValueDataStore();
         FileOptions options = new FileOptions(fileName);
         fileManager = new FileManager(options);
-        create();
+        keyValueDataStore = new KeyValueDataStore();
+        create(options);
     }
 
 
-    private void create() {
+    private void create(FileOptions options) {
+        if (options.isAlreadyExists()){
+            keyValueDataStore.setInMemoryDb(fileManager.getFileRead().getInMemoryDb());
+            System.out.println("Data has been restored from file to MAP!!!!");
+        }
+
         System.out.println("DataManager is ready to go.");
     }
 

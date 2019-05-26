@@ -4,11 +4,13 @@ public class FileOptions {
     private String defaultLocation;
     private String fileName;
     private String preferredLocation;
+    private boolean alreadyExists = false;
 
     public FileOptions() {
         defaultLocation = "/home/user/HulkDb/";
         fileName = "hulk.txt";
         preferredLocation = null;
+        alreadyExists = false;
     }
 
     public FileOptions(String fileName) {
@@ -57,6 +59,13 @@ public class FileOptions {
         return preferredLocation != null;
     }
 
+    public boolean isAlreadyExists() {
+        return alreadyExists;
+    }
+
+    public void setAlreadyExists(boolean alreadyExists) {
+        this.alreadyExists = alreadyExists;
+    }
 }
 
 

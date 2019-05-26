@@ -20,15 +20,21 @@ public class FileRead {
     }
 
     public HashMap<String, String> getInMemoryDb() {
-        HashMap<String, String> inMemoryDb = null;
+        HashMap<String, String> inMemoryDb;
 
         try {
+
+            System.out.println("objectInputStream.read() ==-1 = " + ( objectInputStream.read() ==-1));
+
             inMemoryDb = (HashMap<String, String>) objectInputStream.readObject();
+
             objectInputStream.close();
             fileInputStream.close();
 
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("tried to read the already existing file but failed. because empty.");
+            return new HashMap<>();
         }
 
         return inMemoryDb;

@@ -1,5 +1,7 @@
 package File;
 
+import java.io.File;
+
 public class FileManager {
 
     private FileRead fileRead;
@@ -9,18 +11,17 @@ public class FileManager {
 
     public FileManager(FileOptions fileOptions) {
         this.fileOptions = fileOptions;
-      //  fileRead = new FileRead(fileOptions.getFullPath() );
-        fileWrite = new FileWrite(fileOptions.getFullPath());
-
-       /* if (fileOptions.isPreferredLocationSet()) {
-            fileRead = new FileRead(fileOptions.getPreferredLocation());
-            fileWrite = new FileWrite(fileOptions.getPreferredLocation());
+        if (checkifFileexists(fileOptions.getFullPath())) {
+            fileOptions.setAlreadyExists(true);
+            System.out.println("Already existing file has been opened.");
+            fileRead = new FileRead(fileOptions.getFullPath());
+            //fileWrite = new FileWrite(fileOptions.getFullPath());
         } else {
-            fileRead = new FileRead(fileOptions.getDefaultLocation());
-            fileWrite = new FileWrite(fileOptions.getDefaultLocation());
-
+            System.out.println("A new file has been created ");
+            fileOptions.setAlreadyExists(false);
+            fileWrite = new FileWrite(fileOptions.getFullPath());
+            //   fileRead = new FileRead(fileOptions.getFullPath());
         }
-*/
     }
 
 
@@ -29,10 +30,17 @@ public class FileManager {
     }
 
     public FileWrite getFileWrite() {
+        if(fileWrite==null)
+            return  fileWrite = new FileWrite(fileOptions.getFullPath());
         return fileWrite;
     }
 
     public FileOptions getFileOptions() {
         return fileOptions;
+    }
+
+    private boolean checkifFileexists(String filePath) {
+        File f = new File(filePath);
+        return f.exists() && !f.isDirectory();
     }
 }

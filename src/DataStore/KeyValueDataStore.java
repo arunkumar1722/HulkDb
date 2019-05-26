@@ -40,4 +40,7 @@ public class KeyValueDataStore implements FileStore {
         return inMemoryDb;
     }
 
+    public void setInMemoryDb(HashMap<String, String> inMemoryDb) {
+        this.inMemoryDb = inMemoryDb;
+    }
 }
