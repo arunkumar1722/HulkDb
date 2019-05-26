@@ -1,38 +1,88 @@
+import DataStore.DataManager;
+import File.FileOptions;
 import File.FileRead;
 import File.FileWrite;
 
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
         System.out.println("Hello world");
-       /* FileRead fr = new FileRead("a.txt");
-        fr.getInMemoryDb();
-       */
+        Scanner in = new Scanner(System.in);
+        Scanner userInput = new Scanner(System.in);
+        String filepath, filename;
+        String input;
+        DataManager dm = null;
 
-        FileWrite fw = new FileWrite("a.txt");
-        HashMap<String, String> hm = new HashMap<>();
-        hm.put("1", "Aru1");
-        hm.put("2", "Aru2");
-        hm.put("3", "Aru3");
-        hm.put("4", "Aru4");
+        System.out.println("Welcome to Hulk DB");
 
-        boolean okay = fw.storeInMemoryDb(hm);
-        System.out.println("OKay= " + okay);
+        System.out.println("Enter the file name:");
+        filename = in.next();
 
-        hm.clear();
+        System.out.println("Enter the file path:");
+        filepath = in.next();
 
-        HashMap<String, String> mm = new HashMap<>();
+        if (filepath.isEmpty()) {
+            dm = new DataManager(filename);
+        } else {
+            FileOptions options = new FileOptions(filename, filepath);
+            dm = new DataManager(options);
+        }
 
-        FileRead fr = new FileRead("a.txt");
-        mm = fr.getInMemoryDb();
+        boolean nextTime = true;
+        while (true) {
+            System.out.println("Options :\n 1-Create. \n 2-Read. \n 3-Delete. \n 4-Exit. \n");
+            input = in.next();
+
+            switch (input) {
+                case "1": {
+
+                    System.out.println("Enter the Key");
+                    String key = in.next();
+                    //TODO key validations
+                    System.out.println("Enter the Value");
+
+                    String value = in.next();
+
+                    dm.set(key,value);
 
 
-        System.out.println("Key = 1 , value = "+mm.get("1"));
-        System.out.println("Key = 2 , value = "+mm.get("2"));
-        System.out.println("Key = 3 , value = "+mm.get("3"));
-        System.out.println("Key = 4 , value = "+mm.get("4"));
+                    break;
+                }
+                case "2": {
+                    System.out.println("Enter the Key");
+                    String key = in.next();
+
+
+                   String value =  dm.get(key);
+                   System.out.println("Your value is "+value);
+
+                    break;
+                }
+
+                case "3": {
+                    System.out.println("Enter the Key");
+                    String key = in.next();
+
+
+                    dm.delete(key);
+
+
+                    break;
+                }
+
+                case "4": {
+                    nextTime = false;
+                    break;
+                }
+            }
+
+
+        }
 
 
     }
+
+
 }
