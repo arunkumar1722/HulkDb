@@ -2,6 +2,10 @@ package DataStore;
 
 import File.FileOptions;
 import File.FileManager;
+import Utils.Exceptions.DuplicateKeyException;
+import Utils.Exceptions.JsonSizeException;
+import Utils.Exceptions.KeySizeException;
+import Utils.Exceptions.NoKeyException;
 import org.json.simple.JSONObject;
 
 public class DataManager implements Commands {
@@ -26,7 +30,6 @@ public class DataManager implements Commands {
     private void create(FileOptions options) {
         if (options.isAlreadyExists()){
             keyValueDataStore.setInMemoryDb(fileManager.getFileRead().getInMemoryDb());
-            System.out.println("Data has been restored from file to MAP!!!!");
         }
 
         System.out.println("DataManager is ready to go.");
@@ -34,17 +37,17 @@ public class DataManager implements Commands {
 
 
     @Override
-    public void set(String key, JSONObject value) {
+    public void set(String key, JSONObject value) throws DuplicateKeyException, KeySizeException, JsonSizeException {
         keyValueDataStore.set(key, value);
     }
 
     @Override
-    public JSONObject get(String Key) {
+    public JSONObject get(String Key) throws NoKeyException {
         return keyValueDataStore.get(Key);
     }
 
     @Override
-    public boolean delete(String key) {
+    public boolean delete(String key) throws NoKeyException {
         return keyValueDataStore.delete(key);
     }
 
