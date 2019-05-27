@@ -8,7 +8,8 @@ import org.json.simple.JSONObject;
 
 public interface Commands {
     void set(String key, JSONObject value) throws DuplicateKeyException, KeySizeException, JsonSizeException;
-    JSONObject get(String Key) throws NoKeyException;
+    void setWithTTL(String key, JSONObject value,Long ttl) throws DuplicateKeyException, JsonSizeException, KeySizeException;
+    JsonData get(String Key) throws NoKeyException;
     boolean delete(String key) throws NoKeyException;
     void exit();
 }

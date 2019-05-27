@@ -1,6 +1,7 @@
 package File;
 
 
+import DataStore.JsonData;
 import org.json.simple.JSONObject;
 
 import java.io.*;
@@ -21,14 +22,14 @@ public class FileRead {
         }
     }
 
-    public HashMap<String, JSONObject> getInMemoryDb() {
-        HashMap<String, JSONObject> inMemoryDb;
+    public HashMap<String, JsonData> getInMemoryDb() {
+        HashMap<String, JsonData> inMemoryDb;
 
         try {
 
             System.out.println("objectInputStream.read() ==-1 = " + ( objectInputStream.read() ==-1));
 
-            inMemoryDb = (HashMap<String, JSONObject>) objectInputStream.readObject();
+            inMemoryDb = (HashMap<String, JsonData>) objectInputStream.readObject();
 
             objectInputStream.close();
             fileInputStream.close();

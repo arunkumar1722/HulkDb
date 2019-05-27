@@ -1,9 +1,11 @@
 import DataStore.DataManager;
+import DataStore.JsonData;
 import File.FileOptions;
 import Utils.Exceptions.DuplicateKeyException;
 import Utils.Exceptions.JsonSizeException;
 import Utils.Exceptions.KeySizeException;
 import Utils.Exceptions.NoKeyException;
+import Utils.RandomJsonDataProvider;
 import org.json.simple.JSONObject;
 
 import java.io.BufferedReader;
@@ -44,24 +46,20 @@ public class Application {
                 case "1": {
                     System.out.println("Enter the Key");
                     String key = in.readLine();
-                    System.out.println("Enter the Value");
-                    String value = in.readLine();
+                    System.out.println("Generating random data for json");
 
-                    JSONObject obj;
-                    obj = new JSONObject();
-                    obj.put("Name", value);
-                    obj.put("CharacterCount", value.length());
-                    System.out.println(obj.toJSONString());
+                    JSONObject obj = RandomJsonDataProvider.getRandomJson();
 
-                    /*
-                    SAMPLE:
-                    {
-                        "name ":"value",
-                            "capsName":"VALUE"
-                    }*/
+                    System.out.println("Would you like to set Time to Live? Press Enter to skip or type Number in seconds:");
+                    String data = in.readLine();
+                    Long timetoLive = data.isEmpty() ? 0 : Long.parseLong(data);
+
 
                     try {
-                        dm.set(key, obj);
+                        if (timetoLive == 0)
+                            dm.set(key, obj);
+                        else
+                            dm.setWithTTL(key, obj, timetoLive);
                     } catch (DuplicateKeyException | KeySizeException | JsonSizeException e) {
                         e.printStackTrace();
                     }
@@ -73,14 +71,17 @@ public class Application {
                     String key = in.readLine();
 
 
-                    JSONObject value = null;
+                    JsonData value = null;
                     try {
                         value = dm.get(key);
                     } catch (NoKeyException e) {
                         e.printStackTrace();
                     } finally {
                         if (value != null)
-                            System.out.println("Your value is " + value.toJSONString());
+                            System.out.println("***********\n" +
+                                    "JSON  =  " + value.getJsonObject().toJSONString() +
+                                    "\nTime to live = " + value.getTimeToLive()
+                                    + "\nDate created = " + value.getDateCreated());
 
                     }
 

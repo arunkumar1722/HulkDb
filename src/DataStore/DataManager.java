@@ -28,7 +28,7 @@ public class DataManager implements Commands {
 
 
     private void create(FileOptions options) {
-        if (options.isAlreadyExists()){
+        if (options.isAlreadyExists()) {
             keyValueDataStore.setInMemoryDb(fileManager.getFileRead().getInMemoryDb());
         }
 
@@ -38,11 +38,16 @@ public class DataManager implements Commands {
 
     @Override
     public void set(String key, JSONObject value) throws DuplicateKeyException, KeySizeException, JsonSizeException {
-        keyValueDataStore.set(key, value);
+        keyValueDataStore.setWithTTL(key, value,-1L);
     }
 
     @Override
-    public JSONObject get(String Key) throws NoKeyException {
+    public void setWithTTL(String key, JSONObject value, Long ttl) throws DuplicateKeyException, JsonSizeException, KeySizeException {
+        keyValueDataStore.setWithTTL(key, value, ttl);
+    }
+
+    @Override
+    public JsonData get(String Key) throws NoKeyException {
         return keyValueDataStore.get(Key);
     }
 

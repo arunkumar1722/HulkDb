@@ -1,5 +1,6 @@
 package File;
 
+import DataStore.JsonData;
 import org.json.simple.JSONObject;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -23,7 +24,7 @@ public class FileWrite {
     }
 
 
-    public Boolean storeInMemoryDb(HashMap<String, JSONObject> inMemoryDb) {
+    public Boolean storeInMemoryDb(HashMap<String, JsonData> inMemoryDb) {
         boolean success = true;
         try {
             objectOutputStream.writeObject(inMemoryDb);
