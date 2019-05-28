@@ -16,7 +16,7 @@ FileManager Reponsible for managing File Operations and it employs FileRead, Fil
  DataManager dm;
  dm = new DataManager(filename); //just with file name and default location or
  FileOptions options = new FileOptions(filename, filepath);
- dm = new DataManager(options);  //options with filename and default location. Can add new details later if needed.
+ dm = new DataManager(options);  //options with filename and preferred location. Can add new details later if needed.
 
  dm.set(key, obj); //KEY - STRING , VALUE = JSONObject
 
