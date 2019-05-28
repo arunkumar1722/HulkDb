@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6502ff98-f97a-48ef-a745-d77fb61bec3e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/File/FileOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/File/FileOptions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Validations/ValidationsUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Validations/ValidationsUtils.java" afterDir="false" />
-    </list>
+    <list default="true" id="6502ff98-f97a-48ef-a745-d77fb61bec3e" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,7 +29,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="682">
+            <state relative-caret-position="380">
               <caret line="31" selection-start-line="31" selection-end-line="31" />
             </state>
           </provider>
@@ -340,9 +335,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="80" y="34" width="1840" height="1046" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49916247" visible="true" weight="0.26961884" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49916247" visible="true" weight="0.26961884" />
       <window_info id="Structure" order="1" sideWeight="0.5008375" side_tool="true" weight="0.25392377" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -357,8 +351,8 @@
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32921347" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32921347" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49943945" visible="true" weight="0.32921347" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5005605" side_tool="true" weight="0.32921347" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.2730337" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -631,7 +625,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
+        <state relative-caret-position="380">
           <caret line="31" selection-start-line="31" selection-end-line="31" />
         </state>
       </provider>
