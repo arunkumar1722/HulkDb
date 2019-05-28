@@ -7,6 +7,7 @@ import Utils.Exceptions.KeySizeException;
 import Utils.Exceptions.NoKeyException;
 import Utils.RandomJsonDataProvider;
 import org.json.simple.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -68,7 +69,7 @@ public class Application {
                     String key = in.readLine();
 
 
-                    JsonData value = null;
+                    JSONObject value = null;
                     try {
                         value = dm.get(key);
                     } catch (NoKeyException e) {
@@ -76,9 +77,7 @@ public class Application {
                     } finally {
                         if (value != null)
                             System.out.println("***********\n" +
-                                    "JSON  =  " + value.getJsonObject().toJSONString() +
-                                    "\nTime to live = " + value.getTimeToLive()
-                                    + "\nDate created = " + value.getDateCreated());
+                                    value.toJSONString());
 
                     }
 

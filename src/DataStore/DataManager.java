@@ -49,8 +49,8 @@ public class DataManager implements Commands {
     }
 
     @Override
-    public JsonData get(String Key) throws NoKeyException {
-        return keyValueDataStore.get(Key);
+    public JSONObject get(String Key) throws NoKeyException {
+        return keyValueDataStore.get(Key).getJsonObject();
     }
 
     @Override

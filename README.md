@@ -22,8 +22,7 @@ FileManager Reponsible for managing File Operations and it employs FileRead, Fil
 
  dm.setWithTTL(key, obj, timetoLive); //KEY - STRING , VALUE = JSONObject , TimeToLive in Seconds.
 
- JSONData jsonData = dm.get(KEY);
- jsonData.getJsonObject(); //this is the JSONObject User input.
+ JSONObject jsonObject = dm.get(KEY); //this is the JSONObject User input.
 
  dm.delete(key);  //deletes the key value pair if exists.
   dm.exit(); //has to be called before the program gets terminated as it persists to the file.
