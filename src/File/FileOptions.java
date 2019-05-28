@@ -7,22 +7,23 @@ public class FileOptions {
     private String fileName;
     private String preferredLocation;
     private boolean alreadyExists = false;
+    private final String DEFAULT_LOCATION_STRING = "/home/user/HulkDb/";
 
     public FileOptions() {
-        defaultLocation = "/home/user/HulkDb/";
+        defaultLocation = DEFAULT_LOCATION_STRING;
         fileName = "hulk.txt";
         preferredLocation = null;
         alreadyExists = false;
     }
 
     public FileOptions(String fileName) {
-        defaultLocation = "/home/user/HulkDb/";
+        defaultLocation = DEFAULT_LOCATION_STRING;
         this.fileName = fileName;
         preferredLocation = null;
     }
 
     public FileOptions(String fileName, String filePath) {
-        defaultLocation = "/home/user/HulkDb/";
+        defaultLocation = DEFAULT_LOCATION_STRING;
         this.fileName = fileName;
         this.preferredLocation = filePath;
     }
