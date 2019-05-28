@@ -1,5 +1,7 @@
 package File;
-
+/**
+ * Data class that contains file details.
+ * */
 public class FileOptions {
     private String defaultLocation;
     private String fileName;

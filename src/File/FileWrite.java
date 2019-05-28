@@ -7,6 +7,10 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
 
+/**
+ * FileWrite is a helper class that writes KeyValueDataStore to A File.
+ * * Used for Persistence.
+ * */
 public class FileWrite {
 
     //  private FileWriter fileWriter;

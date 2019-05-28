@@ -1,7 +1,10 @@
 package File;
 
 import java.io.File;
-
+/**
+ * FileManager Reponsible for managing File Operations
+ * Employs FileRead, FileWrite and FileOptions Classes.
+ * */
 public class FileManager {
 
     private FileRead fileRead;

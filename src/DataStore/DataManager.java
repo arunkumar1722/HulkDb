@@ -7,7 +7,9 @@ import Utils.Exceptions.JsonSizeException;
 import Utils.Exceptions.KeySizeException;
 import Utils.Exceptions.NoKeyException;
 import org.json.simple.JSONObject;
-
+/**
+ * [DataManager] is the main class that manages KeyValueDataStore and FileManager
+* */
 public class DataManager implements Commands {
 
     private KeyValueDataStore keyValueDataStore;

@@ -5,7 +5,9 @@ import Utils.Exceptions.JsonSizeException;
 import Utils.Exceptions.KeySizeException;
 import Utils.Exceptions.NoKeyException;
 import org.json.simple.JSONObject;
-
+/**
+ * Interface for KeyValueDataStore
+ * */
 public interface FileStore {
     void set(String key, JSONObject value) throws DuplicateKeyException, KeySizeException, JsonSizeException;
     JsonData get(String Key) throws NoKeyException;

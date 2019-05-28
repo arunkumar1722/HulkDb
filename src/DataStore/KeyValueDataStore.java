@@ -11,6 +11,9 @@ import org.json.simple.JSONObject;
 import java.util.Date;
 import java.util.HashMap;
 
+/**
+ * Wrapper Class For the InMemory DataBase
+ */
 public class KeyValueDataStore implements FileStore {
 
 
@@ -25,11 +28,11 @@ public class KeyValueDataStore implements FileStore {
         if (inMemoryDb.containsKey(key))
             throw new DuplicateKeyException();
 
-        if (!ValidationsUtils.checkKeySize(key))
+        if (ValidationsUtils.AssertKeySize(key))
             throw new KeySizeException();
 
 
-        if (!ValidationsUtils.checkJSONObjectSize(value))
+        if (ValidationsUtils.AssertJsonObjectSize(value))
             throw new JsonSizeException();
 
         JsonData jsonData = new JsonData(value);
@@ -41,11 +44,11 @@ public class KeyValueDataStore implements FileStore {
         if (inMemoryDb.containsKey(key))
             throw new DuplicateKeyException();
 
-        if (!ValidationsUtils.checkKeySize(key))
+        if (ValidationsUtils.AssertKeySize(key))
             throw new KeySizeException();
 
 
-        if (!ValidationsUtils.checkJSONObjectSize(value))
+        if (ValidationsUtils.AssertJsonObjectSize(value))
             throw new JsonSizeException();
 
         JsonData jsonData = new JsonData(value, ttl);
@@ -56,19 +59,21 @@ public class KeyValueDataStore implements FileStore {
     public JsonData get(String Key) throws NoKeyException {
         boolean present = inMemoryDb.containsKey(Key);
 
-        if(!present)
+        if (!present)
             throw new NoKeyException();
 
-        boolean isAlive = true;
+        boolean isAlive;
 
-        if (present) {
-            JsonData jsonData = inMemoryDb.get(Key);
-            Date expiryDate = TimeUtils.addSecondstoDate(jsonData.getDateCreated(), jsonData.getTimeToLive());
-            Date now = new Date();
-            isAlive = now.before(expiryDate);
-        }
+        JsonData jsonData = inMemoryDb.get(Key);
 
-        if(!isAlive){
+        if (jsonData.getTimeToLive() == -1)
+            return inMemoryDb.get(Key);
+
+        Date expiryDate = TimeUtils.addSecondstoDate(jsonData.getDateCreated(), jsonData.getTimeToLive());
+        Date now = new Date();
+        isAlive = now.before(expiryDate);
+
+        if (!isAlive) {
             inMemoryDb.remove(Key);
             throw new NoKeyException();
         }

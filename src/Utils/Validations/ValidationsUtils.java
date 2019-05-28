@@ -1,16 +1,17 @@
 package Utils.Validations;
 
 import org.json.simple.JSONObject;
-
+/** Contains all the validations methods
+ * */
 public class ValidationsUtils {
-    //TODO rename methods
-    public static boolean checkKeySize(String targetString) {
-        return targetString.length() <= 32;
+
+    public static boolean AssertKeySize(String targetString) {
+        return targetString.length() > 32;
     }
 
-    public static boolean checkJSONObjectSize(JSONObject jsonObject) {
+    public static boolean AssertJsonObjectSize(JSONObject jsonObject) {
         int countOfChars = jsonObject.toJSONString().length();
-        return countOfChars <= (16 * 1024);
+        return countOfChars > (16 * 1024);
     }
 
 

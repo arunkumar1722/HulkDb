@@ -2,11 +2,16 @@ package File;
 
 
 import DataStore.JsonData;
-import org.json.simple.JSONObject;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.HashMap;
 
+/**
+ * FileRead is a helper class that reads KeyValueDataStore from A File.
+ * Used for Persistence.
+ */
 public class FileRead {
 
     private FileInputStream fileInputStream;
@@ -27,7 +32,7 @@ public class FileRead {
 
         try {
 
-            System.out.println("objectInputStream.read() ==-1 = " + ( objectInputStream.read() ==-1));
+            //System.out.println("objectInputStream.read() ==-1 = " + ( objectInputStream.read() ==-1));
 
             inMemoryDb = (HashMap<String, JsonData>) objectInputStream.readObject();
 
@@ -36,7 +41,7 @@ public class FileRead {
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("tried to read the already existing file but failed. because empty.");
+            System.out.println("Tried to read the already existing file but failed because " + e.getMessage());
             return new HashMap<>();
         }
 

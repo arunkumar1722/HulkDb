@@ -7,7 +7,6 @@ import Utils.Exceptions.KeySizeException;
 import Utils.Exceptions.NoKeyException;
 import Utils.RandomJsonDataProvider;
 import org.json.simple.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -20,9 +19,7 @@ public class Application {
 
         DataManager dm;
 
-
         System.out.println("Welcome to Hulk DB");
-
         System.out.println("Enter the file name:");
         filename = in.readLine();
 

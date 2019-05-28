@@ -3,7 +3,9 @@ package DataStore;
 import org.json.simple.JSONObject;
 
 import java.util.Date;
-
+/**
+ * The Value which is going to be stored in The [KeyValueDataStore]
+ * */
 public class JsonData {
     /** Supplied By User */
     private JSONObject jsonObject;
