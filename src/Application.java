@@ -52,11 +52,11 @@ public class Application {
 
                     System.out.println("Would you like to set Time to Live? Press Enter to skip or type Number in seconds:");
                     String data = in.readLine();
-                    Long timetoLive = data.isEmpty() ? 0 : Long.parseLong(data);
+                    long timetoLive = data.isEmpty() ? -1 : Long.parseLong(data);
 
 
                     try {
-                        if (timetoLive == 0)
+                        if (timetoLive == -1)
                             dm.set(key, obj);
                         else
                             dm.setWithTTL(key, obj, timetoLive);
